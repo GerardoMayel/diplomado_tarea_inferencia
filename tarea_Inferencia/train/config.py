@@ -1,6 +1,8 @@
 import os
+
 BASE_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__), ".."))
-URL = "https://www.openml.org/data/get_csv/16826755/phpMYEkMl"
+# Cambia la URL para que apunte a tu archivo local
+URL = os.path.join(BASE_DIR, "train/data", "phpMYEkMl.csv")
 
 SEED_SPLIT = 404
 SEED_MODEL = 404

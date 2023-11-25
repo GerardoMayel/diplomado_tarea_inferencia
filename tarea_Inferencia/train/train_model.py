@@ -11,8 +11,10 @@ from transformers.transformers import (
     DropTransformer,
 )
 import pandas as pd
-
-from . import config
+#se modifica del codigo original
+import config
+#se modifica del codigo original
+from config import *
 from sklearn.pipeline import Pipeline
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
