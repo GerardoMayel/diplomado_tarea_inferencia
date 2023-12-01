@@ -1,82 +1,45 @@
-# Sesión 14: FastAPI y Modelo de Machine Learning
+# Titanic Pipeline
 
-## Instrucciones para la Actividad Grupal
+==============================
 
-**Fecha de Entrega:** Martes, 28 de Noviembre
+## Training
 
-### Tarea: Crear una Aplicación FastAPI para Servir un Modelo
+- Podemos configurar el training en src-config-config.py
+- Podemos iniciar el training con `python -m train.train_model`
+- Posteriormente, dirigirse a la carpeta `/models`, identificar el modelo recién entrenado
 
-**Escenario:**
-Un compañero de trabajo te ha proporcionado código para entrenar un modelo de alto rendimiento y solicita tu ayuda para implementarlo en una API local como primer paso hacia la producción.
+## Serving/Inference (Falta por implementar)
 
-#### Pasos a Seguir:
+- Podemos iniciar el servidor para las predicciones con `uvicorn serve.predict:app --reload` .
+- Podemos rquerir una prediccion mandando un `POST` (se puede usar Postman) a la url http://127.0.0.1:8000/prediction con un JSON en el Body en el siguiente formato:
 
-1. **Revisión del Código:**
+```
+{
+    "pclass": 1,
+    "name": "Allen, Miss. Elisabeth Walton",
+    "sex": "female",
+    "age": "29",
+    "sibsp": 0,
+    "parch": 0,
+    "ticket": "24160",
+    "fare": "211.3375",
+    "cabin": "B5",
+    "embarked": "S",
+    "boat": "2",
+    "body": "?",
+    "home_dest": "St Louis, MO"
+}
+```
 
-   - Correr el código para verificar su funcionamiento y para crear el modelo.
+## Lista de Logs
 
-2. **Refactorización:**
+| Path                       | Description                                                                                                                                                | Severity |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `titanic/serve/predict.py` | Log para registrar para el modelo: id, version, datos de entrada, datos procesados y prediccion. Para el sistema: timepo de ejecución y memoria utilizada. | INFO     |
+| `titanic/serve/predict.py` | Carga del modelo                                                                                                                                           | CRITICAL |
 
-   - Anotar al menos 5 ideas para refactorizaciones basadas en los aprendizajes de los últimos meses.
+-
 
-   -Crear una estructura de directorios standard para una app
-   Idea 1:
-   my_fastapi_project/
-   │
-   ├── app/ # Carpeta principal de la aplicación
-   │ ├── **init**.py # Inicializa el paquete de Python
-   │ ├── main.py # Archivo principal de FastAPI
-   │ ├── dependencies.py # Dependencias de la aplicación
-   │ ├── routers/ # Rutas de la aplicación
-   │ │ ├── **init**.py
-   │ │ └── prediction.py # Ruta para realizar predicciones
-   │ └── models/ # Modelos de datos Pydantic
-   │ ├── **init**.py
-   │ └── prediction.py # Modelo de datos para la predicción
-   │
-   ├── tests/ # Pruebas unitarias
-   │ ├── **init**.py
-   │ └── test_prediction.py # Pruebas para la ruta de predicción
-   │
-   ├── training/ # Scripts de entrenamiento de modelos
-   │ ├── **init**.py
-   │ └── train_model.py # Script para entrenar el modelo
-   │
-   ├── logs/ # Directorio para archivos de log
-   │
-   ├── models/ # Modelos entrenados almacenados
-   │ └── model.pkl # Modelo entrenado serializado
-   │
-   ├── requirements.txt # Dependencias del proyecto
-   ├── README.md # Documentación del proyecto
-   └── .gitignore # Archivos ignorados por Git
-   requirements.txt
+## Opcional
 
-3. **Construcción de la Aplicación FastAPI: (Tarea Principal)**
-   a. Desarrollar un método POST que reciba un JSON como entrada. (Ejemplo de JSON al final del documento).
-   b. Utilizar Pydantic para parsear los valores de entrada.
-   c. Utilizar el modelo para realizar una predicción.
-   d. Devolver la predicción al cliente, preferiblemente usando Pydantic.
-
-4. **Demostración en Video:**
-
-   - Grabar un video mostrando los siguientes procesos:
-     a. Entrenamiento del modelo.
-     b. Inicio del servidor.
-     c. Uso de Postman para realizar peticiones al servidor.
-     d. Recepción de una predicción como respuesta.
-
-5. **Pruebas Unitarias:**
-
-   - Añadir pruebas unitarias para el entrenamiento y la inferencia del modelo.
-
-6. **Logging:**
-
-   - Implementar un sistema de logging para registrar los valores de entrada y la predicción retornada durante la inferencia.
-
-7. **Control de Versiones:**
-
-   - Subir el código a un repositorio en Github. Idealmente, ir subiendo cada cambio con contribuciones de todos los integrantes del grupo.
-
-8. **Bonificación (Opcional):**
-   - Aplicar las refactorizaciones anotadas y/o mejorar el rendimiento del modelo.
+- Falta agregar una página inicial con la documentación
