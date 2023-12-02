@@ -28,4 +28,6 @@ FEATURES = [
 ]
 NUMERICAL_VARS = ["pclass", "age", "sibsp", "parch", "fare"]
 CATEGORICAL_VARS = ["sex", "cabin", "embarked", "title"]
-DROP_COLS = ["boat", "body", "ticket", "name"]
+DROP_COLS = ["boat", "body", "ticket", "name", "home_dest"]
+
+

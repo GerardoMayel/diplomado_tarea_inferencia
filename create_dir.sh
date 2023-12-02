@@ -1,3 +1,0 @@
-
-#mkdir -p fastapi_project_tarea/app/routers fastapi_project_tarea/app/models fastapi_project_tarea/tests fastapi_project_tarea/training fastapi_project_tarea/logs fastapi_project_tarea/models
-touch fastapi_project_tarea/app/__init__.py fastapi_project_tarea/app/main.py fastapi_project_tarea/app/dependencies.py fastapi_project_tarea/app/routers/__init__.py fastapi_project_tarea/app/routers/prediction.py fastapi_project_tarea/app/models/__init__.py fastapi_project_tarea/app/models/prediction.py fastapi_project_tarea/tests/__init__.py fastapi_project_tarea/tests/test_prediction.py fastapi_project_tarea/train/__init__.py

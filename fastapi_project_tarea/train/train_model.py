@@ -64,7 +64,7 @@ def train(model_name: str):
         [("preprocessor", preprocessor), (f"{model_name}_regressor", regressor)]
     )
 
-    df = pd.read_csv(config.URL).drop(columns="home.dest")
+    df = pd.read_csv(config.URL).rename(columns={'home.dest':'home_dest'})
     X_train, X_test, y_train, y_test = train_test_split(
         df.drop(config.TARGET, axis=1),
         df[config.TARGET],
