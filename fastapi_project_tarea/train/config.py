@@ -6,7 +6,14 @@ URL = os.path.join(BASE_DIR, "train/data", "phpMYEkMl.csv")
 
 SEED_SPLIT = 404
 SEED_MODEL = 404
-MODEL_NAME = os.path.realpath(os.path.join(BASE_DIR, "models", "model.sav"))
+ARTIFACTS_FOLDER = os.path.join(BASE_DIR, "artifacts") # Ruta a la carpeta de artefactos
+# Ajustar los nombres para reflejar tanto el modelo como el pipeline
+MODEL_FILE_NAME = "model.pkl" # Nombre del archivo del modelo entrenado
+PREPROCESSOR_FILE_NAME = "preprocessor.pkl" # Nombre del archivo del preprocesador
+# Rutas completas para el modelo y el preprocesador
+MODEL_PATH = os.path.join(ARTIFACTS_FOLDER, MODEL_FILE_NAME)
+PREPROCESSOR_PATH = os.path.join(ARTIFACTS_FOLDER, PREPROCESSOR_FILE_NAME)
+
 TARGET = "survived"
 FEATURES = [
     "pclass",
